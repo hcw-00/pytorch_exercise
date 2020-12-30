@@ -1,5 +1,5 @@
 # pytorch_exercise
 pytorch exercise
 
-references : 
+reference : 
 hook - https://github.com/elliotwaite/pytorch-hooks-tutorial
