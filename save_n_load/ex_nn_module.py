@@ -60,8 +60,31 @@ for module in model.modules():
     print(type(module)) 
     print('=====')
 
+print()
+print("<<_parameters>>")
+for param in model._parameters:
+    print(type(param)) 
+    print('=====')
+
+print()
+print("<<_children>>")
+try:
+    for child in model._children:
+        print(type(child)) 
+        print('=====')
+except:
+    print('"_children" does not exists.')
+
+print()
+print("<<_modules>>")
+for module in model._modules:
+    print(module)
+    print(model._modules[module])
+    print('=====')
+
 # => "name_" 의 유무 차이는 name 도 함께 반환하느냐의 차이.
 # => "children"은 직계 모듈만 반환하는 반면에 "modules"는 모든 하위 모듈을 반환한다.
+# => under score("_")로 시작하면 Ordered dictionary를 반환한다. ("_parameter"는 비어 있고,  "_children" 은 존재하지 않는다.)
 
 # <<named_parameters>>
 # name:sequential.0.weight
@@ -183,4 +206,27 @@ for module in model.modules():
 # <class 'torch.nn.modules.conv.Conv2d'>
 # =====
 # <class 'torch.nn.modules.linear.Linear'>
+# =====
+
+# <<_parameters>>
+
+# <<_children>>
+# "_children" does not exists.
+
+# <<_modules>>
+# sequential
+# Sequential(
+#   (0): Conv2d(1, 32, kernel_size=(5, 5), stride=(1, 1))
+#   (1): Conv2d(32, 64, kernel_size=(5, 5), stride=(1, 1))
+#   (2): Dropout(p=0.3, inplace=False)
+# )
+# =====
+# layer1
+# Conv2d(64, 128, kernel_size=(5, 5), stride=(1, 1))
+# =====
+# layer2
+# Conv2d(128, 256, kernel_size=(5, 5), stride=(1, 1))
+# =====
+# fc
+# Linear(in_features=295936, out_features=128, bias=True)
 # =====
