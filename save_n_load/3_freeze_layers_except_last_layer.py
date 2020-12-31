@@ -41,3 +41,4 @@ for name, param in model.named_parameters():
 # layer2.bias : False
 # fc.weight : True
 # fc.bias : True
+
