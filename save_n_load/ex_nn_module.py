@@ -82,9 +82,9 @@ for module in model._modules:
     print(model._modules[module])
     print('=====')
 
-# => "name_" 의 유무 차이는 name 도 함께 반환하느냐의 차이.
+# => "named_abc"와 "abc"는 name을 함께 반환하는냐를 제외하고 동일함.
 # => "children"은 직계 모듈만 반환하는 반면에 "modules"는 모든 하위 모듈을 반환한다.
-# => under score("_")로 시작하면 Ordered dictionary를 반환한다. ("_parameter"는 비어 있고,  "_children" 은 존재하지 않는다.)
+# => "_abc"는 Ordered dictionary를 반환한다. ("_parameter"는 비어 있고,  "_children" 은 존재하지 않는다.)
 
 # <<named_parameters>>
 # name:sequential.0.weight
@@ -118,7 +118,7 @@ for module in model._modules:
 # <class 'torch.nn.parameter.Parameter'>
 # =====
 
-# <<named_children>>
+# <<named_children>> # 직계 자식만 반환
 # name:sequential
 # <class 'torch.nn.modules.container.Sequential'>
 # =====
@@ -132,7 +132,7 @@ for module in model._modules:
 # <class 'torch.nn.modules.linear.Linear'>
 # =====
 
-# <<named_modules>>
+# <<named_modules>> # 하위 모든 자식을 반환
 # name:
 # <class '__main__.NeuralNet'>
 # =====
