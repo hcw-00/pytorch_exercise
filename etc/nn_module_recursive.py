@@ -70,7 +70,7 @@ modules_test(model)
 print('# of conv layer is : ',cnt)
 
 # => 모든 layer를 탐색하기 위해서 _modules.items를 사용하면 recursive 함수가 필요하지만 named_modules나 modules는 recursive가 필요하지 않다.
-# => check how "_modules.items" is used in grad-CAM code (jacobgil)
+# => check how "_modules.items()" is used in grad-CAM code (jacobgil)
 
 # CASE 1 : Recursive w/ _modules.items()
 # Sequential
