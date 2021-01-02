@@ -20,35 +20,45 @@ class NeuralNet(nn.Module):
 
 model = NeuralNet()
 
-def recursive_relu_apply(module_top, recursive=True):
+def _modules_test(module_top, recursive=True):
     global cnt
     # Non-recursive case
     for idx, module in module_top._modules.items():
         print(module.__class__.__name__)
         if 'conv' in module.__class__.__name__.lower():
             cnt += 1        
-        if recursive:
-            recursive_relu_apply(module) # <== Recursive
+        if recursive: # <== Recursive!
+            _modules_test(module)
 
 
-print('CASE 1 : Non-Recursive')
+print('CASE 1 : Recursive w/ _modules')
 cnt = 0
-recursive_relu_apply(model, recursive=False)
-print('Total # of conv in network is : ',cnt)
+_modules_test(model, recursive=True)        
+print('# of conv layer is : ',cnt)
 print('========================================')
-print('CASE 2 : Recursive')
+print('CASE 2 : Non-Recursive w/ _modules')
 cnt = 0
-recursive_relu_apply(model, recursive=True)        
-print('Total # of conv in network is : ',cnt)
+_modules_test(model, recursive=False)
+print('# of conv layer is : ',cnt)
 
-# CASE 1 : Non-Recursive
-# Sequential
-# Conv2d
-# Conv2d
-# Linear
-# Total # of conv in network is :  2
-# ========================================
-# CASE 2 : Recursive
+def named_modules_test(module_top):
+    global cnt
+    # Non-recursive case
+    for name, module in module_top.named_modules():
+        print(module.__class__.__name__)
+        if 'conv' in module.__class__.__name__.lower():
+            cnt += 1        
+        
+print('========================================')
+print('CASE 3 : None-Recursive w/ named_modules')
+cnt = 0
+named_modules_test(model)
+print('# of conv layer is : ',cnt)
+
+# => 모든 layer를 탐색하기 위해서 _modules를 사용하면 recursive 함수가 필요하지만 named_modules는 recursive가 필요하지 않다.
+# => _modules와 named_modules는 유사하지 않다. 
+
+# CASE 1 : Recursive w/ _modules
 # Sequential
 # Conv2d
 # Conv2d
@@ -56,4 +66,22 @@ print('Total # of conv in network is : ',cnt)
 # Conv2d
 # Conv2d
 # Linear
-# Total # of conv in network is :  4
+# # of conv layer is :  4
+# ========================================
+# CASE 2 : Non-Recursive w/ _modules
+# Sequential
+# Conv2d
+# Conv2d
+# Linear
+# # of conv layer is :  2
+# ========================================
+# CASE 3 : None-Recursive w/ named_modules
+# NeuralNet
+# Sequential
+# Conv2d
+# Conv2d
+# Dropout
+# Conv2d
+# Conv2d
+# Linear
+# # of conv layer is :  4
