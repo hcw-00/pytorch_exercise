@@ -22,7 +22,6 @@ model = NeuralNet()
 
 def _modules_test(module_top, recursive=True):
     global cnt
-    # Non-recursive case
     for idx, module in module_top._modules.items():
         print(module.__class__.__name__)
         if 'conv' in module.__class__.__name__.lower():
@@ -43,7 +42,6 @@ print('# of conv layer is : ',cnt)
 
 def named_modules_test(module_top):
     global cnt
-    # Non-recursive case
     for name, module in module_top.named_modules():
         print(module.__class__.__name__)
         if 'conv' in module.__class__.__name__.lower():
@@ -57,7 +55,6 @@ print('# of conv layer is : ',cnt)
 
 def modules_test(module_top):
     global cnt
-    # Non-recursive case
     for module in module_top.modules():
         print(module.__class__.__name__)
         if 'conv' in module.__class__.__name__.lower():
