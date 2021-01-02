@@ -82,7 +82,7 @@ for module in model._modules:
     print(model._modules[module])
     print('=====')
 
-# => "named_abc"와 "abc"는 name을 함께 반환하는냐를 제외하고 동일함.
+# => "named_abc"와 "abc"는 name을 함께 반환하는냐의 차이.
 # => "children"은 직계 모듈만 반환하는 반면에 "modules"는 모든 하위 모듈을 반환한다.
 # => "_abc"는 Ordered dictionary를 반환한다. ("_parameter"는 비어 있고,  "_children" 은 존재하지 않는다.)
 
