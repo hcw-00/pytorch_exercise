@@ -14,7 +14,6 @@ In PyTorch, the nn package serves this same purpose.
 import torch
 import math
 
-
 # Create Tensors to hold input and outputs.
 x = torch.linspace(-math.pi, math.pi, 2000)
 y = torch.sin(x)
