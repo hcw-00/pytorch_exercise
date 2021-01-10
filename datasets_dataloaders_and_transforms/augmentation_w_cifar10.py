@@ -72,7 +72,7 @@ display_augmented_images(aug_f)
 #            Random Crop            
 #######################################
 # (20, 20 size로 return)
-aug_f = transforms.RandomCrop((20, 20))
+aug_f = transforms.RandomCrop(size=(20, 20))
 display_augmented_images(aug_f)
 
 #######################################
@@ -143,9 +143,9 @@ print('data shape:', data.shape)
 print('permute   :', data.permute(0, 3, 1, 2).shape)
 print('transpose :', data.transpose(1, 3).shape)
 
-data shape: torch.Size([50000, 32, 32, 3])
-permute   : torch.Size([50000, 3, 32, 32])
-transpose : torch.Size([50000, 3, 32, 32])
+# data shape: torch.Size([50000, 32, 32, 3])
+# permute   : torch.Size([50000, 3, 32, 32])
+# transpose : torch.Size([50000, 3, 32, 32])
 
 #######################################
 #              To Tensor            
@@ -157,5 +157,5 @@ aug_f = transforms.ToTensor()
 print('image shape          :', img.shape)
 print('augmented image shape:', aug_f(img).shape)
 
-image shape          : (32, 32, 3)
-augmented image shape: torch.Size([3, 32, 32])
+# image shape          : (32, 32, 3)
+# augmented image shape: torch.Size([3, 32, 32])
