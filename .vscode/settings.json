@@ -1,7 +1,11 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "python.pythonPath": "C:\\ProgramData\\Anaconda3\\envs\\pytorch\\python.exe"
 =======
     "python.pythonPath": "/Users/wwaust/anaconda3/envs/pytorch/bin/python"
 >>>>>>> 6f3df8b254cfb6da32cb71b61e9fad3f22396033
+=======
+    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\envs\\pytorch\\python.exe"
+>>>>>>> e90cf92d9bc352dfa11b0f82da22a57e97133718
 }
