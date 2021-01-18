@@ -24,7 +24,7 @@ class dataset_1(Dataset):
     def __getitem__(self, idx):
         print()
         x, y = self.xy[idx]
-        x2, y2 = self.xy2[idx]
+        x2, y2 = self.xy2[idx+1]
         x, x2 = np.asarray(x), np.asarray(x2)
         x = x - x2
         x, x2 = Image.fromarray(x), Image.fromarray(x2)
